@@ -84,3 +84,18 @@ Here is a demonstration of the pipeline analyzing an image of an industrial pump
 * **Deployment as a Web App:** Package the pipeline into a Flask or FastAPI web application for easy use.
 * **Real-Time Video Processing:** Adapt the script to run on a live video feed from an IP camera for continuous monitoring.
 * **Expand Fault Classes:** Collect more data for rarer and more subtle defect types to further improve the model's diagnostic capabilities.
+
+
+
+
+## 📦 Dataset
+This project uses two custom datasets:
+
+1. **Tools & Machines Detection Dataset**  
+   - Annotated for object detection with YOLOv11 format  
+   - [Download from Google Drive](https://drive.google.com/drive/folders/1ch4IvZ2BCWRgodM2Z0rULLT2fAn0QYK0?usp=sharing)
+
+2. **Faults & Breakdowns Detection Dataset**  
+   - Annotated for object detection with YOLOv11 format  
+   - [Download from Google Drive](https://drive.google.com/drive/folders/1L0vN75vwAAZgR7LKYCC4mCztMuCCWajL?usp=sharing)
+
