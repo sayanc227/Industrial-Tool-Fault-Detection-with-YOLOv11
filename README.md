@@ -185,6 +185,12 @@ This project was developed and tested in:
 - Sets up proper data paths for training
 - Creates YOLOv11-compatible configuration
 
+### `run_inference.py`
+
+- Executes YOLOv11 training pipeline
+- Configurable hyperparameters
+- Supports various YOLO model variants
+
 ### `test_model.py`
 - Professional model testing and inference
 - Supports batch processing of images
