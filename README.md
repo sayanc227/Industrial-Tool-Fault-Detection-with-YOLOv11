@@ -11,6 +11,7 @@ A computer vision project for detecting industrial faults using YOLOv11 object d
 
 This project applies the YOLOv11 object detection model to identify various types of industrial faults in tools and machinery. It’s designed to support automated fault detection in industrial environments by recognizing multiple defect categories. The setup includes organized datasets, dynamic configuration generation, and streamlined scripts for training and evaluation.
 
+
 ## 🛠️ Features
 
 - **Automated Dataset Splitting**: Intelligent train/validation split functionality
