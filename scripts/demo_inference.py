@@ -9,7 +9,7 @@ Usage:
     python demo_inference.py
     python demo_inference.py --model_path /path/to/best.pt --images_path /path/to/images
 
-Author: Sayan Chatterjee
+Author: Sayan C 
 Project: Industrial Fault Detection using YOLOv11
 """
 
