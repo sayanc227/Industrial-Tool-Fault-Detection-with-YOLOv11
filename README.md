@@ -4,225 +4,235 @@
 [![YOLOv11](https://img.shields.io/badge/YOLOv11-Latest-green)](https://github.com/ultralytics/ultralytics)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **Custom-trained YOLOv11 models for industrial fault detection and tools/machines identification in manufacturing environments.**
+A computer vision project for detecting industrial faults using YOLOv11 object detection model. This project implements automated fault detection in industrial equipment and components using deep learning techniques.
 
-## 🔍 Overview
+## 🎯 Project Overview
 
-This project implements computer vision solutions for industrial quality control using state-of-the-art YOLOv11 object detection models. The system can identify industrial tools, machines, and detect faults or breakdowns in manufacturing equipment with high accuracy.
+This project demonstrates the application of state-of-the-art object detection algorithms for identifying various types of industrial faults. The model is trained using YOLOv11 architecture and can detect multiple fault categories in industrial environments.
 
-### Key Features
-- **Dual Model Architecture**: Separate models for tools/machines detection and fault identification
-- **Custom Dataset Annotation**: Hand-annotated datasets in YOLOv11 format
-- **Real-time Detection**: Optimized for industrial environments
-- **High Accuracy**: Trained on domain-specific industrial imagery
+## 🛠️ Features
 
-## 📊 Project Structure
+- **Automated Dataset Splitting**: Intelligent train/validation split functionality
+- **Dynamic Configuration**: Automatic YAML configuration file generation
+- **YOLOv11 Integration**: Utilizes the latest YOLO architecture for superior performance
+- **Industrial Focus**: Specialized for industrial fault detection scenarios
+- **Scalable Architecture**: Easy to extend for additional fault types
+
+## 📁 Project Structure
 
 ```
 industrial-fault-detection/
+├── scripts/
+│   ├── split_dataset.py          # Dataset splitting utility
+│   ├── create_yaml.py             # Configuration file generator
+│   ├── run_inference.py           # Model training script
+│   ├── test_model.py              # Professional model testing
+│   └── demo_inference.py          # Quick demo inference
+├── data/
+│   ├── train/
+│   │   ├── images/
+│   │   └── labels/
+│   └── validation/
+│       ├── images/
+│       └── labels/
+├── models/
+│   └── (trained model weights)
+├── results/
+│   └── (training results and metrics)
 ├── README.md
 ├── requirements.txt
-├── LICENSE
-├── .gitignore
-├── notebooks/
-│   ├── data_exploration.ipynb
-│   ├── model_training.ipynb
-│   └── inference_demo.ipynb
-├── src/
-│   ├── __init__.py
-│   ├── data/
-│   │   ├── __init__.py
-│   │   ├── dataset_utils.py
-│   │   └── preprocessing.py
-│   ├── models/
-│   │   ├── __init__.py
-│   │   ├── yolo_trainer.py
-│   │   └── inference.py
-│   └── utils/
-│       ├── __init__.py
-│       ├── visualization.py
-│       └── metrics.py
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── annotations/
-├── models/
-│   ├── tools_machines_model.pt
-│   └── faults_breakdowns_model.pt
-├── results/
-│   ├── training_logs/
-│   ├── evaluation_metrics/
-│   └── sample_predictions/
-└── docs/
-    ├── model_architecture.md
-    ├── training_process.md
-    └── deployment_guide.md
+└── data.yaml
 ```
 
-## 🎯 Models Performance
-
-| Model | Dataset | mAP@0.5 | Precision | Recall | Classes |
-|-------|---------|---------|-----------|--------|---------|
-| Tools & Machines Detection | Custom Industrial Dataset | 0.892 | 0.884 | 0.867 | 12 |
-| Faults & Breakdowns Detection | Custom Fault Dataset | 0.876 | 0.891 | 0.859 | 8 |
-
-## 📁 Datasets
-
-### 1. Tools & Machines Detection Dataset
-- **Description**: Annotated dataset containing various industrial tools and manufacturing machines
-- **Format**: YOLOv11 compatible annotations
-- **Classes**: [List your specific classes here]
-- **Total Images**: [Add number]
-- **Download**: [Google Drive Link](https://drive.google.com/drive/folders/1ch4IvZ2BCWRgodM2Z0rULLT2fAn0QYK0?usp=sharing)
-
-### 2. Faults & Breakdowns Detection Dataset
-- **Description**: Annotated dataset for detecting faulty or damaged industrial components
-- **Format**: YOLOv11 compatible annotations
-- **Classes**: [List your specific classes here]
-- **Total Images**: [Add number]
-- **Download**: [Google Drive Link](https://drive.google.com/drive/folders/1L0vN75vwAAZgR7LKYCC4mCztMuCCWajL?usp=sharing)
-
-## 🚀 Quick Start
+## 🚀 Getting Started
 
 ### Prerequisites
-- Python 3.8+
-- CUDA 11.0+ (for GPU training)
-- 8GB+ RAM recommended
+
+- Python 3.8 or higher
+- CUDA-compatible GPU (recommended)
+- Google Colab or local Python environment
 
 ### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/sayanc227/industrial-fault-detection.git
+   cd industrial-fault-detection
+   ```
+
+2. **Install required packages**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Prepare your dataset**
+   - Organize your images and labels according to YOLO format
+   - Update the dataset path in the scripts
+
+## 📊 Usage
+
+### 1. Dataset Preparation
+
+Split your dataset into training and validation sets:
+
 ```bash
-git clone https://github.com/sayanc227/industrial-fault-detection.git
-cd industrial-fault-detection
-pip install -r requirements.txt
+python scripts/split_dataset.py --datapath="/path/to/your/dataset" --train_pct=0.9
 ```
 
-### Download Pre-trained Models
+### 2. Configuration Setup
+
+Generate the YAML configuration file:
+
 ```bash
-# Tools & Machines Detection Model
-wget -O models/tools_machines_model.pt "https://drive.google.com/uc?id=1ZreG4TP2WSpivRTMe_4oWqB87mzQ3oZ7"
-
-# Faults & Breakdowns Detection Model  
-wget -O models/faults_breakdowns_model.pt "https://drive.google.com/uc?id=1pveSD0okpU-CLVGq1G6X3401ENEOWKcU"
+python scripts/create_yaml.py
 ```
 
-### Basic Usage
-```python
-from src.models.inference import IndustrialFaultDetector
+This script will:
+- Read your classes.txt file
+- Generate data.yaml with proper paths and class information
+- Configure training parameters
 
-# Initialize detector
-detector = IndustrialFaultDetector(
-    tools_model_path='models/tools_machines_model.pt',
-    faults_model_path='models/faults_breakdowns_model.pt'
-)
+### 3. Model Training
 
-# Run inference
-results = detector.detect('path/to/your/image.jpg')
-detector.visualize_results(results)
-```
+Train the YOLOv11 model:
 
-## 🔧 Training Your Own Models
-
-### Data Preparation
 ```bash
-python src/data/preprocessing.py --input_dir data/raw --output_dir data/processed
+python scripts/run_inference.py
 ```
 
-### Model Training
+Training parameters:
+- **Model**: YOLOv11s (small variant)
+- **Epochs**: 100
+- **Image Size**: 640x640
+- **Format**: PyTorch (.pt)
+
+### 4. Model Testing and Inference
+
+After training, test your model on new images:
+
+**Professional Testing Script:**
 ```bash
-python src/models/yolo_trainer.py --config configs/training_config.yaml
+python scripts/test_model.py --model path/to/best.pt --source path/to/test_images/
 ```
 
-### Evaluation
+**Quick Demo (matches original Colab workflow):**
 ```bash
-python src/utils/metrics.py --model_path models/your_model.pt --test_data data/test
+python scripts/demo_inference.py
 ```
 
-## 📈 Results & Visualizations
+Testing features:
+- **Automated model detection**: Finds trained models automatically
+- **Batch processing**: Process entire directories of images
+- **Visual results**: Display detected faults with bounding boxes
+- **Confidence filtering**: Adjustable detection confidence threshold
+- **Results saving**: Saves annotated images and detection labels
 
-### Sample Detections
-![Tools Detection](results/sample_predictions/tools_detection_sample.jpg)
-*Tools and machines detection in industrial setting*
+## 📈 Model Performance
 
-![Fault Detection](results/sample_predictions/fault_detection_sample.jpg)  
-*Fault detection on manufacturing equipment*
+The model achieves competitive performance in industrial fault detection:
 
-### Training Metrics
-![Training Loss](results/training_logs/training_curves.png)
-*Model training progression and validation metrics*
+- **Architecture**: YOLOv11s
+- **Training Data Split**: 90% training, 10% validation
+- **Input Resolution**: 640x640 pixels
+- **Training Epochs**: 100
 
-## 🛠️ Technical Details
+## 🔧 Configuration
 
-### Model Architecture
-- **Base Model**: YOLOv11n/s/m (specify which variant)
-- **Input Resolution**: 640x640
-- **Anchor-free Detection**: Yes
-- **Data Augmentation**: Mosaic, Mixup, HSV augmentation
-
-### Training Configuration
-- **Epochs**: 300
-- **Batch Size**: 16
-- **Optimizer**: AdamW
-- **Learning Rate**: 0.001 (with cosine decay)
-- **Hardware**: [Specify GPU used]
-
-## 📊 Model Evaluation
-
-### Confusion Matrix
-![Confusion Matrix](results/evaluation_metrics/confusion_matrix.png)
-
-### Per-Class Performance
-| Class | Precision | Recall | F1-Score | Support |
-|-------|-----------|--------|----------|---------|
-| Class1 | 0.89 | 0.91 | 0.90 | 245 |
-| Class2 | 0.87 | 0.84 | 0.85 | 189 |
-| ... | ... | ... | ... | ... |
-
-## 🚀 Deployment
-
-### Docker Deployment
-```bash
-docker build -t industrial-fault-detector .
-docker run -p 8000:8000 industrial-fault-detector
+### Dataset Structure
+Ensure your dataset follows this structure:
+```
+dataset/
+├── images/
+│   ├── image1.jpg
+│   ├── image2.jpg
+│   └── ...
+├── labels/
+│   ├── image1.txt
+│   ├── image2.txt
+│   └── ...
+└── classes.txt
 ```
 
-### API Endpoint
-```bash
-curl -X POST -F "image=@test_image.jpg" http://localhost:8000/detect
+### Classes Configuration
+Update `classes.txt` with your fault categories:
+```
+fault_type_1
+fault_type_2
+fault_type_3
+...
 ```
 
-## 🔄 Future Improvements
+## 💻 Development Environment
 
-- [ ] Implement real-time video processing
-- [ ] Add model quantization for edge deployment
-- [ ] Expand dataset with more fault categories
-- [ ] Integration with industrial IoT systems
-- [ ] Multi-camera setup support
+This project was developed and tested in:
+- **Google Colab**: Primary development environment
+- **Python**: 3.8+
+- **CUDA**: For GPU acceleration
+- **YOLOv11**: Latest YOLO architecture
+
+## 📝 Scripts Description
+
+### `split_dataset.py`
+- Downloads and executes train/validation split utility
+- Configurable train/test ratio (default: 90/10)
+- Handles YOLO format datasets
+
+### `create_yaml.py`
+- Automatically generates YAML configuration
+- Reads class names from classes.txt
+- Sets up proper data paths for training
+- Creates YOLOv11-compatible configuration
+
+### `test_model.py`
+- Professional model testing and inference
+- Supports batch processing of images
+- Configurable confidence thresholds
+- Visual display of results (Jupyter/Matplotlib)
+- Automatic model detection
+- Saves annotated results and detection labels
+
+### `demo_inference.py`
+- Simple demo script matching original Colab workflow
+- Quick testing with minimal configuration
+- Automatic path detection for local/Colab environments
+- Direct recreation of original inference commands
+
+## 🎯 Applications
+
+This industrial fault detection system can be applied to:
+- **Manufacturing Quality Control**
+- **Predictive Maintenance**
+- **Automated Inspection Systems**
+- **Industrial Safety Monitoring**
+- **Equipment Health Assessment**
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+## 📧 Contact
+
+**Sayan Chatterjee** - [GitHub Profile](https://github.com/sayanc227)
+
+Project Link: [https://github.com/sayanc227/industrial-fault-detection](https://github.com/sayanc227/industrial-fault-detection)
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📞 Contact
-
-**Sayan Chakraborty**
-- GitHub: [@sayanc227](https://github.com/sayanc227)
-- LinkedIn: [Your LinkedIn Profile]
-- Email: your.email@domain.com
-
 ## 🙏 Acknowledgments
 
-- [Ultralytics](https://ultralytics.com/) for YOLOv11 implementation
-- Industrial partners for dataset collaboration
-- Open source computer vision community
+- YOLOv11 developers for the excellent object detection framework
+- EdjeElectronics for the train/validation split utility
+- Google Colab for providing the development environment
+- The open-source computer vision community
 
 ---
 
-⭐ **If you found this project helpful, please consider giving it a star!**
+⭐ **Star this repository if you find it helpful!**
