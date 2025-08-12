@@ -1,54 +1,163 @@
-# =========================================
-# General Python & Virtual Environments
-# =========================================
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-env/
-venv/
-.env
+# Industrial Fault Detection - .gitignore
 
-# =========================================
-# Jupyter & Google Colab Notebooks
-# =========================================
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Jupyter Notebook
 .ipynb_checkpoints
 *.ipynb
 
-# =========================================
-# YOLOv8 Specific Files & Directories
-# =========================================
-# Ignore all training runs, logs, and saved models
-runs/
-YOLOv8_Detection_Project/
-*.pt
-*.onnx
+# IPython
+profile_default/
+ipython_config.py
 
-# Ignore the generated dataset configuration file
-dataset.yaml
+# Environment variables
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-# =========================================
-# Datasets (VERY IMPORTANT)
-# =========================================
-# Never upload your dataset to GitHub. It's too large.
-YOLO_database/
-/content/
-
-# =========================================
-# Log and Data Files
-# =========================================
-*.log
-*.csv
-*.pkl
-
-# =========================================
-# IDE & Editor Directories
-# =========================================
+# IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
-# =========================================
-# OS Specific Files
-# =========================================
+# Dataset files (large files)
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tiff
+*.tif
+*.gif
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.zip
+*.tar.gz
+*.rar
+
+# Dataset directories
+data/
+dataset/
+datasets/
+images/
+labels/
+train/
+validation/
+test/
+
+# Model files (large files)
+*.pt
+*.pth
+*.onnx
+*.trt
+*.engine
+*.weights
+*.cfg
+*.names
+
+# Training outputs
+runs/
+results/
+weights/
+checkpoints/
+logs/
+
+# YOLOv11 specific
+yolo11*.pt
+wandb/
+.wandb/
+
+# Tensorboard
+events.out.tfevents.*
+
+# Google Colab
+.colab_settings
+.config/
+
+# MacOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Documentation build
+docs/_build/
+site/
+
+# Coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Custom
+train_val_split.py  # Downloaded utility
+*.yaml.backup
+config_backup/
