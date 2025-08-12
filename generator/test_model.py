@@ -9,7 +9,7 @@ Usage:
     python test_model.py --model path/to/best.pt --source path/to/images
     python test_model.py --model best.pt --source test_images/ --display 10
 
-Author: Sayan Chatterjee
+Author: Sayan C
 Project: Industrial Fault Detection using YOLOv11
 """
 
