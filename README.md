@@ -4,11 +4,12 @@
 [![YOLOv11](https://img.shields.io/badge/YOLOv11-Latest-green)](https://github.com/ultralytics/ultralytics)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+
 A computer vision project for detecting industrial faults using YOLOv11 object detection model. This project implements automated fault detection in industrial equipment and components using deep learning techniques.
 
 ## 🎯 Project Overview
 
-This project demonstrates the application of state-of-the-art object detection algorithms for identifying various types of industrial faults. The model is trained using YOLOv11 architecture and can detect multiple fault categories in industrial environments.
+This project applies the YOLOv11 object detection model to identify various types of industrial faults in tools and machinery. It’s designed to support automated fault detection in industrial environments by recognizing multiple defect categories. The setup includes organized datasets, dynamic configuration generation, and streamlined scripts for training and evaluation.
 
 ## 🛠️ Features
 
@@ -218,7 +219,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ## 📧 Contact
 
-**Sayan Chatterjee** - [GitHub Profile](https://github.com/sayanc227)
+**Sayan C ** - [GitHub Profile](https://github.com/sayanc227)
 
 Project Link: [https://github.com/sayanc227/industrial-fault-detection](https://github.com/sayanc227/industrial-fault-detection)
 
