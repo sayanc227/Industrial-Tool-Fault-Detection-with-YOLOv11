@@ -228,7 +228,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 **Sayan C ** - [GitHub Profile](https://github.com/sayanc227)
 
-Project Link: [https://github.com/sayanc227/industrial-fault-detection](https://github.com/sayanc227/industrial-fault-detection)
+Feel free to reach out via email: [Light_anonymous@protonmail.com](mailto:Light_anonymous@protonmail.com)
 
 ## 📄 License
 
